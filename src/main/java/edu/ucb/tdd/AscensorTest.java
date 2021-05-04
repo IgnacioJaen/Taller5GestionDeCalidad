@@ -1,7 +1,6 @@
 package edu.ucb.tdd;
 
 import Packages.Ascensor;
-import Packages.Calculadora;
 import Packages.Persona;
 import org.junit.Rule;
 import org.junit.Test;
