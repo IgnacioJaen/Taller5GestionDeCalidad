@@ -17,9 +17,9 @@ public class Ascensor {
 
     //Funcion para verificar que las personas que
     //ingresen al ascensor no sobre pase su capacidad maxima
-    //true cuando no sobrepasa la capacidad maxima y false cuando ya paso el limite
+    //true cuando sobrepasa la capacidad maxima y false cuando ya paso el limite
     public boolean lleno() {
-        if(personas<=CAPACIDAD_MAXIMA){
+        if(personas==CAPACIDAD_MAXIMA){
             return true;
         }else{
             return false;
@@ -87,14 +87,17 @@ public class Ascensor {
         //Si los pisos son iguales lanzara una excepcion
         if(persona.getPisoDestino()==pisoAscensor){
             throw new Exception("El piso destino no puede ser igual al piso del ascensor");
-        }else{//Caso contrario validara que no son iguales por lo que puede llevarlo a su destino en la siguiente funcion
+        }else{
+            //Caso contrario validara que no son iguales por lo que puede llevarlo a su destino en la siguiente funcion
             return false;
         }
     }
 
     //Funcion que permite al ascensor llevar a la persona a su destino
     public void moverAscensor() {
+        //Se asigna al ascensor el piso del ultimo destino en el que estuvo
         pisoAscensor = pisoDestino;
+        //Al dejar a la persona en el piso destino, la cantidad de personas en el ascensor disminuye
         personas--;
     }
 
@@ -105,8 +108,9 @@ public class Ascensor {
             direccion = arriba;
         }else if(pisoPersona<pisoAscensor){
             direccion = abajo;
-        }else
+        }
 
+        //una vez que se asigna la direccion del ascensor, este se mueve
         moverAscensor();
 
         return direccion;
